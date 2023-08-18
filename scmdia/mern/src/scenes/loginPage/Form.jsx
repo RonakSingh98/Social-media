@@ -23,7 +23,7 @@ const registerSchema = yup.object().shape({
   password: yup.string().required("required"),
   location: yup.string().required("required"),
   occupation: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  // picture: yup.string().required("required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -61,7 +61,7 @@ const Form = () => {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    formData.append("picturePath", values.picture.name);
+    // formData.append("picturePath", values.picture.name);
     console.log(values);
 
     const savedUserResponse = await fetch(
@@ -181,11 +181,11 @@ const Form = () => {
                   p="1rem"
                 >
                   <Dropzone
-                    acceptedFiles=".jpg,.jpeg,.png"
-                    multiple={false}
-                    onDrop={(acceptedFiles) =>
-                      setFieldValue("picture", acceptedFiles[0])
-                    }
+                    // acceptedFiles=".jpg,.jpeg,.png"
+                    // multiple={false}
+                    // onDrop={(acceptedFiles) =>
+                    //   setFieldValue("picture", acceptedFiles[0])
+                    // }
                   >
                     {({ getRootProps, getInputProps }) => (
                       <Box
