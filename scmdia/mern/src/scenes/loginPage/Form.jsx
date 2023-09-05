@@ -61,8 +61,6 @@ const Form = () => {
     for (let value in values) {
       formData.append(value, values[value]);
     }
-    // formData.append("picturePath", values.picture.name);
-    console.log(values);
 
     const savedUserResponse = await fetch(
       "https://social-media-liart-eta.vercel.app/auth/register",

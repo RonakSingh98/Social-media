@@ -32,7 +32,7 @@ export const createPost = async (req ,res) =>{
 
 export const getFeedPosts = async (req,res)=> {
     try {
-        const post = await Post.find();
+        const post = await Post.find().populate({path:"userId",select:"picturePath"});
         res.status(200).json(post);
     }
     catch(err){
@@ -57,7 +57,7 @@ export const likePost = async(req,res)=>{
       const {id} = req.params;
       const {userId} = req.body;
       const post = await Post.findById(id);
-      const isLiked = post.liked.get(userId);
+      const isLiked = post.likes.get(userId);
 
       if(isLiked){
         post.likes.delete(userId);
@@ -70,7 +70,7 @@ export const likePost = async(req,res)=>{
         id,
         {likes:post.likes},
         {new : true}
-      );
+      ).populate({path:"userId",select:"picturePath"});
       res.status(200).json(updatedPost);
     }
     catch(err){

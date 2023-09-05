@@ -1,6 +1,9 @@
 import { Box } from "@mui/material";
 
 const UserImage = ({ image, size = "60px" }) => {
+  if(!image){
+    image = "defaultuser.png";
+  }
   return (
     <Box width={size} height={size}>
       <img

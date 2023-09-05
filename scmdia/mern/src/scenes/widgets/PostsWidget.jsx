@@ -36,10 +36,9 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       getPosts();
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <>
-      {posts.map(
+      {posts && posts.map(
         ({
           _id,
           userId,
@@ -48,11 +47,14 @@ const PostsWidget = ({ userId, isProfile = false }) => {
           description,
           location,
           picturePath,
-          userPicturePath,
           likes,
           comments,
-        }) => (
-          <PostWidget
+        }) => {
+          let userPicture = "defaultuser.png";
+          if(userId){
+            userPicture = userId.picturePath || "defaultuser.png";
+          }
+          return <PostWidget
             key={_id}
             postId={_id}
             postUserId={userId}
@@ -60,11 +62,11 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             description={description}
             location={location}
             picturePath={picturePath}
-            userPicturePath={userPicturePath}
+            userPicturePath={userPicture}
             likes={likes}
             comments={comments}
           />
-        )
+        }
       )}
     </>
   );
