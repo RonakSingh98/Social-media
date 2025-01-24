@@ -172,13 +172,13 @@ const Form = () => {
                   helperText={touched.occupation && errors.occupation}
                   sx={{ gridColumn: "span 4" }}
                 />
-                <Box
+{/*                 <Box
                   gridColumn="span 4"
                   border={`1px solid ${palette.neutral.medium}`}
                   borderRadius="5px"
                   p="1rem"
                 >
-                  <Dropzone
+{/*                   <Dropzone
                     // acceptedFiles=".jpg,.jpeg,.png"
                     // multiple={false}
                     // onDrop={(acceptedFiles) =>
@@ -203,10 +203,10 @@ const Form = () => {
                         )}
                       </Box>
                     )}
-                  </Dropzone>
+                  </Dropzone> */}
                 </Box>
               </>
-            )}
+            )} */}
 
             <TextField
               label="Email"
